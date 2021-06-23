@@ -1,13 +1,25 @@
 package com.example.firebasetorecyclerview;
 
 public class Student {
-    private String name, age, rollNo;
+    private String name, age, rollNo, dept;
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
+
+    public Student(){
+    }
 
     public Student(String name, String age, String rollNo) {
         this.name = name;
         this.age = age;
         this.rollNo = rollNo;
     }
+
 
     public String getName() {
         return name;

@@ -3,6 +3,7 @@ package com.example.firebasetorecyclerview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private EditText etName, etAge, etRoll, etDept;
-    private Button addData, uData;
+    private Button addData, uData, listOfUsers, deleteD;
     TextView sampleTv, sample2;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -41,10 +42,20 @@ public class MainActivity extends AppCompatActivity {
         etDept = (EditText) findViewById(R.id.dept);
         addData = (Button) findViewById(R.id.add);
         uData = (Button) findViewById(R.id.update);
-        sampleTv = (TextView) findViewById(R.id.sample);
-        sample2 = (TextView) findViewById(R.id.sample2);
+        deleteD = (Button) findViewById(R.id.deleteD);
+        listOfUsers = (Button) findViewById(R.id.listUsers);
+
+
+        listOfUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         writeData();
-        readData();
+//        readData();
+        deleteData();
         updateData();
     }
 
@@ -60,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Student student = new Student(name, age, rollId);
 
-                myRef.child(dept).setValue(student);
+                myRef.child("dept").child(dept).setValue(student);
                 Toast.makeText(MainActivity.this, "Values inserted", Toast.LENGTH_SHORT).show();
 
                 etName.setText("");
@@ -72,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readData(){
-        DatabaseReference node = database.getReference("student").child("CO");
+        DatabaseReference node = database.getReference("student").child("dept").child("CO");
         node.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -116,6 +127,19 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+    }
+
+    private void deleteData(){
+        deleteD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("student").child("dept");
+                reference.removeValue();
+                Toast.makeText(MainActivity.this, "Values deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 }

@@ -6,28 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/sample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/add"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/add"
-        app:layout_constraintTop_toBottomOf="@+id/add" />
-
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Enter name.."
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/age"
@@ -77,23 +66,33 @@
         app:layout_constraintStart_toStartOf="@+id/rollID"
         app:layout_constraintTop_toBottomOf="@+id/rollID" />
 
-    <TextView
-        android:id="@+id/sample2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/sample"
-        app:layout_constraintStart_toStartOf="@+id/sample"
-        app:layout_constraintTop_toBottomOf="@+id/sample" />
-
     <Button
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Update"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:text="Update Database"
+        app:layout_constraintEnd_toEndOf="@+id/add"
+        app:layout_constraintStart_toStartOf="@+id/add"
+        app:layout_constraintTop_toBottomOf="@+id/add" />
+
+    <Button
+        android:id="@+id/listUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Show List of Users"
+        app:layout_constraintEnd_toEndOf="@+id/update"
+        app:layout_constraintStart_toStartOf="@+id/update"
+        app:layout_constraintTop_toBottomOf="@+id/update" />
+
+    <Button
+        android:id="@+id/deleteD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete All Data"
+        app:layout_constraintEnd_toEndOf="@+id/listUsers"
+        app:layout_constraintStart_toStartOf="@+id/listUsers"
+        app:layout_constraintTop_toBottomOf="@+id/listUsers" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
