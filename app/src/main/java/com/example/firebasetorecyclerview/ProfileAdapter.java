@@ -38,6 +38,8 @@ public class ProfileAdapter extends FirebaseRecyclerAdapter<Student, ProfileAdap
         holder.nameTv.setText(model.getName());
         holder.ageTv.setText(model.getAge());
         holder.rollTv.setText(model.getRollNo());
+        
+        holder.deptTv.setText(model.getDept());
     }
 
     @NonNull
@@ -54,6 +56,7 @@ public class ProfileAdapter extends FirebaseRecyclerAdapter<Student, ProfileAdap
             nameTv = itemView.findViewById(R.id.nameField);
             ageTv = itemView.findViewById(R.id.ageField);
             rollTv = itemView.findViewById(R.id.rollField);
+           deptTv = itemView.findViewById(R.id.deptField);
         }
     }
 }

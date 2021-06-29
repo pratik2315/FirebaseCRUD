@@ -77,5 +77,16 @@
         app:layout_constraintStart_toStartOf="@+id/ageField"
         app:layout_constraintTop_toBottomOf="@+id/ageField" />
 
+    <TextView
+        android:id="@+id/deptField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/rollField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rollField"
+        app:layout_constraintTop_toBottomOf="@+id/rollField" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

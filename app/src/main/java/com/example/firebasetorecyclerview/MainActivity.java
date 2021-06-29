@@ -68,16 +68,20 @@ public class MainActivity extends AppCompatActivity {
                 String age = etAge.getText().toString().trim();
                 String rollId = etRoll.getText().toString().trim();
                 String dept = etDept.getText().toString().trim();
+                if (name.isEmpty() && age.isEmpty() && rollId.isEmpty() && dept.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Values Empty", Toast.LENGTH_SHORT).show();
+                } else{
+                    Student student = new Student(name, age, rollId);
 
-                Student student = new Student(name, age, rollId);
+                    myRef.child("dept").child(dept).setValue(student);
+                    Toast.makeText(MainActivity.this, "Values inserted", Toast.LENGTH_SHORT).show();
 
-                myRef.child("dept").child(dept).setValue(student);
-                Toast.makeText(MainActivity.this, "Values inserted", Toast.LENGTH_SHORT).show();
+                    etName.setText("");
+                    etAge.setText("");
+                    etRoll.setText("");
+                    etDept.setText("");
+                }
 
-                etName.setText("");
-                etAge.setText("");
-                etRoll.setText("");
-                etDept.setText("");
             }
         });
     }
@@ -113,19 +117,27 @@ public class MainActivity extends AppCompatActivity {
                 String updateName = etName.getText().toString();
                 String updateAge = etAge.getText().toString();
                 String updateRoll = etRoll.getText().toString();
+                String updateDept = etDept.getText().toString();
 
-                HashMap map = new HashMap();
-                map.put("name", updateName);
-                map.put("age", updateAge);
-                map.put("rollNo", updateRoll);
+                if (updateAge.isEmpty() && updateAge.isEmpty() && updateRoll.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Values Empty", Toast.LENGTH_SHORT).show();
+                } else{
+                    node.setValue(updateDept);
+                    HashMap map = new HashMap();
+                    map.put("name", updateName);
+                    map.put("age", updateAge);
+                    map.put("rollNo", updateRoll);
 
-                node.updateChildren(map).addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) {
-                        Toast.makeText(MainActivity.this, "Values updated", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+                    node.updateChildren(map).addOnSuccessListener(new OnSuccessListener() {
+                        @Override
+                        public void onSuccess(Object o) {
+                            Toast.makeText(MainActivity.this, "Values updated", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                }
+
+
         });
 
     }
